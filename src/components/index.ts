@@ -1,2 +1,5 @@
+export * from './Footer'
+export * from './Header'
+export * from './JumpTo'
 export * from './Layout'
 export * from './Menu'

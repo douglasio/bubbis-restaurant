@@ -1,9 +1,10 @@
-import { headerHeight } from 'components/Layout/Layout.styles'
 import styled from 'styled-components/macro'
+import { headerHeight } from 'components/Header/Header.styles'
 import { FontSize, FontWeight } from 'styles'
 
 export const Menu = styled.section`
 	margin: 0 1rem;
+	width: 100%;
 `
 
 export const Title = styled.h2`
@@ -16,7 +17,7 @@ export const Title = styled.h2`
 
 export const MenuItem = styled.li`
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
+	grid-template-columns: 2fr 1fr;
 	grid-template-rows: repeat(2, auto);
 	grid-gap: 0.25rem 0.5rem;
 	margin: 2rem 0;

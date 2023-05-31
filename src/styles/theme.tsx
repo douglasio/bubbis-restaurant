@@ -13,14 +13,50 @@ const defaultTheme: DefaultTheme = {
 			headings: {
 				h1: Color.white,
 			},
+			button: {
+				background: {
+					default: Color.persianOrange,
+					hover: Color.white,
+					active: Color.white,
+				},
+				text: {
+					default: Color.white,
+					hover: Color.white,
+					active: Color.white,
+				},
+			},
 			body: Color.white,
-			link: Color.persianOrange,
+			link: {
+				default: Color.persianOrange,
+				hover: Color.white,
+			},
 		},
 	},
 	header: {
 		background: {
 			default: Color.milano,
 			sticky: Color.faluRed,
+		},
+		jumpTo: {
+			button: {
+				background: {
+					default: Color.persianOrange,
+					hover: Color.white,
+					active: Color.white,
+				},
+				text: {
+					default: Color.white,
+					hover: Color.white,
+					active: Color.white,
+				},
+			},
+			nav: {
+				background: Color.faluRed,
+				link: {
+					default: Color.white,
+					hover: Color.white,
+				},
+			},
 		},
 	},
 	footer: {

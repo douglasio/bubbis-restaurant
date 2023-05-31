@@ -60,6 +60,7 @@ export const GlobalStyle = styled.createGlobalStyle<{ theme: ThemeType }>`
 		color: ${({ theme }) => theme.global.content.body};
 		font-family: ${FontFamily.ysabeau};
 		font-size: 18px;
+		scroll-behavior: smooth;
 	}
 
 	h1 {
@@ -79,6 +80,10 @@ export const GlobalStyle = styled.createGlobalStyle<{ theme: ThemeType }>`
 	}
 
 	a {
-		color: ${({ theme }) => theme.global.content.link};
+		color: ${({ theme }) => theme.global.content.link.default};
+
+		&:hover {
+			color: ${({ theme }) => theme.global.content.link.hover};
+		}
 	}
 `

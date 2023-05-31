@@ -10,9 +10,9 @@ type MenuProps = {
 	title: string
 }
 
-export const Menu = ({ title, items }: MenuProps) => {
+export const Menu = ({ title, slug, items }: MenuProps) => {
 	return (
-		<Styled.Menu>
+		<Styled.Menu id={slug}>
 			<Styled.Title>{title}</Styled.Title>
 			<ul>
 				{items?.map(({ id, name, price, description }) => {
