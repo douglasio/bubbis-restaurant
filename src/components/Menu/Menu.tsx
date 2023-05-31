@@ -9,7 +9,7 @@ type MenuProps = {
 	title: string
 }
 
-export const Menu = ({ children, title, items }: MenuProps) => {
+export const Menu = ({ title, items }: MenuProps) => {
 	return (
 		<section>
 			<h2>{title}</h2>

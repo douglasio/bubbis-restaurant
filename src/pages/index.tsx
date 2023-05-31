@@ -1,28 +1,24 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, HeadFC, type HeadProps } from 'gatsby'
 import { Menu, Layout } from 'components'
 import type { AllContentfulMenu } from 'components/Menu/types'
 import * as Styled from './index.styles'
 
-type AllContentfulHomepage = {
-	nodes: {
-		heading: string
-	}
+type ContentfulHomepage = {
+	heading: string
 }
 
 interface IndexPageProps {
 	data: {
-		allContentfulHomepage: AllContentfulHomepage
+		contentfulHomepage: ContentfulHomepage
 		allContentfulMenu: AllContentfulMenu
 	}
 }
 
 const IndexPage: React.FC<IndexPageProps> = ({
-	data: { allContentfulHomepage, allContentfulMenu },
+	data: { contentfulHomepage, allContentfulMenu },
 }) => {
-	const {
-		nodes: { heading },
-	} = allContentfulHomepage
+	const { heading } = contentfulHomepage
 	const { nodes: menus } = allContentfulMenu
 
 	return (
@@ -45,12 +41,16 @@ const IndexPage: React.FC<IndexPageProps> = ({
 // Must use default export for Gatsby pages
 export default IndexPage
 
+export const Head = ({
+	data: {
+		contentfulHomepage: { heading },
+	},
+}: HeadProps<IndexPageProps['data']>) => <title>{heading}</title>
+
 export const query = graphql`
 	query IndexPage {
-		allContentfulHomepage {
-			nodes {
-				heading
-			}
+		contentfulHomepage {
+			heading
 		}
 		allContentfulMenu {
 			nodes {
