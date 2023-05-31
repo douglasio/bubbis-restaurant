@@ -1,37 +1,20 @@
 import React from 'react'
-import { graphql, HeadFC, type HeadProps } from 'gatsby'
+import { graphql, HeadFC, type HeadProps, type PageProps } from 'gatsby'
 import { Menu, Layout } from 'components'
-import type { AllContentfulMenu } from 'components/Menu/types'
+import type { AllContentfulMenu, ContentfulGlobal } from 'contentful.types'
 import * as Styled from './index.styles'
 
-type ContentfulHomepage = {
-	heading: string
-}
-
 interface IndexPageProps {
-	data: {
-		contentfulHomepage: ContentfulHomepage
-		allContentfulMenu: AllContentfulMenu
-	}
+	allContentfulMenu: AllContentfulMenu
+	contentfulGlobal: ContentfulGlobal
 }
 
-const IndexPage: React.FC<IndexPageProps> = ({
-	data: { contentfulHomepage, allContentfulMenu },
-}) => {
-	const { heading } = contentfulHomepage
-	const { nodes: menus } = allContentfulMenu
-
+const IndexPage = ({ data }: PageProps<IndexPageProps>) => {
 	return (
 		<Layout theme="light">
 			<Styled.IndexPage>
-				<h1>{heading}</h1>
-				{menus.map((menu) => {
-					console.log(menu)
-					return (
-						<Menu key={menu.id} {...menu}>
-							stuff inside menu
-						</Menu>
-					)
+				{data.allContentfulMenu?.nodes.map((menu) => {
+					return <Menu key={menu.id} {...menu} />
 				})}
 			</Styled.IndexPage>
 		</Layout>
@@ -43,16 +26,16 @@ export default IndexPage
 
 export const Head = ({
 	data: {
-		contentfulHomepage: { heading },
+		contentfulGlobal: { name },
 	},
-}: HeadProps<IndexPageProps['data']>) => <title>{heading}</title>
+}: HeadProps<IndexPageProps>) => <title>{name}</title>
 
 export const query = graphql`
 	query IndexPage {
-		contentfulHomepage {
-			heading
+		contentfulGlobal {
+			name
 		}
-		allContentfulMenu {
+		allContentfulMenu(sort: { createdAt: ASC }) {
 			nodes {
 				title
 				slug
@@ -60,6 +43,10 @@ export const query = graphql`
 				items {
 					name
 					price
+					description {
+						description
+					}
+					id
 				}
 			}
 		}

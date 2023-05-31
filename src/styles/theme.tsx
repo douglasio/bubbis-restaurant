@@ -1,19 +1,30 @@
+import { type DefaultTheme } from 'styled-components'
 import { Color } from './colors'
 
-const defaultTheme = {
+const defaultTheme: DefaultTheme = {
 	id: 1,
 	name: 'light',
 	global: {
 		background: {
 			light: Color.milano,
-			dark: Color.black,
+			dark: Color.faluRed,
 		},
 		content: {
 			headings: {
 				h1: Color.white,
 			},
 			body: Color.white,
+			link: Color.persianOrange,
 		},
+	},
+	header: {
+		background: {
+			default: Color.milano,
+			sticky: Color.faluRed,
+		},
+	},
+	footer: {
+		background: Color.faluRed,
 	},
 }
 
@@ -23,6 +34,7 @@ export const theme = {
 	},
 	dark: {
 		...defaultTheme,
+		id: 2,
 	},
 }
 
