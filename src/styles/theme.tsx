@@ -73,13 +73,17 @@ const defaultTheme: DefaultTheme = {
 	},
 	menu: {
 		title: {
-			color: Color.white,
+			text: {
+				default: Color.chewingGum,
+				sticky: Color.white,
+			},
 			background: {
 				default: Color.transparent,
 				sticky: Color.pomegranate,
 			},
 		},
 		shadedRow: Color.guardsman,
+		divider: Color.sunset,
 	},
 }
 

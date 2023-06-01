@@ -26,5 +26,9 @@ export type ContentfulGlobal = {
 }
 
 export type ContentfulHomepage = {
+	heading: string
 	heroImage: { description: string; gatsbyImageData: IGatsbyImageData }
+	introText: {
+		introText: string
+	}
 }

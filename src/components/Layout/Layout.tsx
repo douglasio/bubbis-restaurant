@@ -4,9 +4,11 @@ import { ThemeProvider } from 'styled-components'
 import { Footer, Header } from 'components'
 import { theme, GlobalStyle } from 'styles'
 import * as Styled from './Layout.styles'
+import { HeaderSize } from 'components/Header/types'
 
 type LayoutProps = {
 	children: React.ReactNode
+	headerSize?: HeaderSize
 	theme: keyof typeof theme
 }
 
@@ -37,8 +39,8 @@ export const Layout: React.FC<LayoutProps> = (props) => {
 		<ThemeProvider theme={theme[props.theme]}>
 			<GlobalStyle theme={theme[props.theme]} />
 			<div id="top" />
-			<Header name={name} description={description} />
-			{props.children}
+			<Header name={name} description={description} size={props.headerSize} />
+			<Styled.Body>{props.children}</Styled.Body>
 			<Footer
 				name={name}
 				phone={phone}

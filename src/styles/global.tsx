@@ -72,6 +72,7 @@ export const GlobalStyle = styled.createGlobalStyle<{ theme: ThemeType }>`
 	}
 
 	h2 {
+		font-family: ${FontFamily.playfair};
 		font-size: ${FontSize.heading2};
 		font-weight: ${FontWeight.bold};
 	}
@@ -94,7 +95,8 @@ export const GlobalStyle = styled.createGlobalStyle<{ theme: ThemeType }>`
 		}
 	}
 
-	button:not(.plain) {
+	button:not(.plain),
+	.button {
 		border: 0;
 		background-color: ${({ theme }) =>
 			theme.global.content.button.background.default};

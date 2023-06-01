@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql, HeadFC, type HeadProps, type PageProps } from 'gatsby'
+import { graphql, HeadFC, Link, type HeadProps, type PageProps } from 'gatsby'
 import { Menu, Layout, JumpTo } from 'components'
 import type {
 	AllContentfulMenu,
@@ -10,6 +10,7 @@ import * as Styled from './index.styles'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown, faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import { SVG } from 'svgs'
 
 interface IndexPageProps {
 	allContentfulMenu: AllContentfulMenu
@@ -18,45 +19,33 @@ interface IndexPageProps {
 }
 
 const IndexPage = ({ data }: PageProps<IndexPageProps>) => {
-	const menus = data.allContentfulMenu.nodes
-	const heroImage = data.contentfulHomepage.heroImage
-
-	console.log(heroImage)
+	const {
+		contentfulHomepage: {
+			heroImage,
+			introText: { introText },
+		},
+		allContentfulMenu: { nodes: menus },
+	} = data
 
 	return (
 		<Layout theme="light">
-			<Styled.IndexPage>
-				<Styled.Section className="intro">
-					{heroImage && (
-						<Styled.HeroImage
-							alt={heroImage.description}
-							draggable={false}
-							image={getImage(heroImage)!}
-						/>
-					)}
-					<Styled.Intro>
-						<h2>Food be yum</h2>
-						<nav>
-							<a href="#menu">Menu</a>
-							<a href="#menu">Location</a>
-							<a href="#menu">Hours</a>
-							<a href="#menu">Contact</a>
-						</nav>
-					</Styled.Intro>
-					<Styled.DownArrow className="plain" href="#menu" target="_self">
-						<FontAwesomeIcon icon={faAngleDown} />
-					</Styled.DownArrow>
-				</Styled.Section>
-				<Styled.Section id="menu">
-					<h2>Menu</h2>
-					{menus.map((menu) => {
-						return <Menu key={menu.id} {...menu} />
-					})}
-				</Styled.Section>
-				<Styled.Section>
-					<h2></h2>
-				</Styled.Section>
-			</Styled.IndexPage>
+			<Styled.Section className="intro">
+				<Styled.Intro>
+					<div className="intro-text">{introText}</div>
+					<nav className="intro-nav">
+						<Link className="button" to="location">
+							Location &amp; Hours
+						</Link>
+					</nav>
+				</Styled.Intro>
+			</Styled.Section>
+			<Styled.Section id="menu">
+				<h2>
+					<SVG.Pomegranate className="section-heading-svg" />
+					Menu
+				</h2>
+				<Menu menus={menus} />
+			</Styled.Section>
 		</Layout>
 	)
 }
@@ -76,13 +65,9 @@ export const query = graphql`
 			name
 		}
 		contentfulHomepage {
-			heroImage {
-				description
-				gatsbyImageData(
-					layout: FULL_WIDTH
-					placeholder: BLURRED
-					resizingBehavior: FILL
-				)
+			heading
+			introText {
+				introText
 			}
 		}
 		allContentfulMenu(sort: { createdAt: ASC }) {

@@ -6,6 +6,10 @@ import * as Styled from './Menu.styles'
 import { JumpTo } from 'components/JumpTo'
 
 type MenuProps = {
+	menus: MenuSectionProps[]
+}
+
+type MenuSectionProps = {
 	id: string
 	children?: ReactNode
 	slug?: string
@@ -13,17 +17,17 @@ type MenuProps = {
 	title: string
 }
 
-export const Menu = ({ title, slug, items }: MenuProps) => {
+const MenuSection = ({ title, slug, items }: MenuSectionProps) => {
 	const sentinelRef = useRef<HTMLDivElement>(null)
 	const { isSticky } = useStickyObserver(sentinelRef, [0.1, 1])
 
 	return (
-		<Styled.Menu id={slug}>
+		<Styled.MenuSection id={slug}>
 			<div ref={sentinelRef} style={{ transform: 'translateY(-3.5rem)' }} />
 			<Styled.Title $isSticky={isSticky}>
 				<h3>{title}</h3>
 			</Styled.Title>
-			<ul>
+			<Styled.List>
 				{items?.map(({ id, name, price, description, image }) => {
 					return (
 						<Fragment key={id}>
@@ -39,13 +43,23 @@ export const Menu = ({ title, slug, items }: MenuProps) => {
 								<div className="name">{name}</div>
 								<div className="price">{price}</div>
 								{description && (
-									<div className="description">{description?.description}</div>
+									<div className="description">{description.description}</div>
 								)}
 							</Styled.MenuItem>
 						</Fragment>
 					)
 				})}
-			</ul>
+			</Styled.List>
+		</Styled.MenuSection>
+	)
+}
+
+export const Menu = ({ menus }: MenuProps) => {
+	return (
+		<Styled.Menu>
+			{menus.map((menu) => (
+				<MenuSection key={menu.id} {...menu} />
+			))}
 		</Styled.Menu>
 	)
 }

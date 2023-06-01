@@ -74,13 +74,17 @@ declare module 'styled-components' {
 		}
 		menu: {
 			title: {
-				color: Color
+				text: {
+					default: Color
+					sticky: Color
+				}
 				background: {
 					default: Color
 					sticky: Color
 				}
 			}
 			shadedRow: Color
+			divider: Color
 		}
 	}
 }
