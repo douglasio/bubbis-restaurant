@@ -36,6 +36,7 @@ export const Layout: React.FC<LayoutProps> = (props) => {
 	return (
 		<ThemeProvider theme={theme[props.theme]}>
 			<GlobalStyle theme={theme[props.theme]} />
+			<div id="top" />
 			<Header name={name} description={description} />
 			{props.children}
 			<Footer

@@ -1,6 +1,9 @@
 import React, { RefObject, useEffect, useState } from 'react'
 
-export const useStickyObserver = (sentinelRef: RefObject<HTMLDivElement>) => {
+export const useStickyObserver = (
+	sentinelRef: RefObject<HTMLDivElement>,
+	threshold: number[]
+) => {
 	const [isSticky, setIsSticky] = useState<boolean>(false)
 
 	useEffect(() => {
@@ -18,7 +21,7 @@ export const useStickyObserver = (sentinelRef: RefObject<HTMLDivElement>) => {
 				setIsSticky(!e.isIntersecting) // isSticky should be true when item should be stuck to top
 				// setIsSticky(e.intersectionRatio > 1)
 			},
-			{ threshold: [0] }
+			{ threshold: threshold }
 		)
 
 		if (header) {

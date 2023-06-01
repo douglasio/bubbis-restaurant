@@ -60,8 +60,27 @@ declare module 'styled-components' {
 				}
 			}
 		}
+		homepage: {
+			intro: {
+				downArrow: {
+					default: Color
+					hover: Color
+					active: Color
+				}
+			}
+		}
 		footer: {
 			background: Color
+		}
+		menu: {
+			title: {
+				color: Color
+				background: {
+					default: Color
+					sticky: Color
+				}
+			}
+			shadedRow: Color
 		}
 	}
 }

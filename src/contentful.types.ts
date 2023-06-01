@@ -1,7 +1,10 @@
+import type { IGatsbyImageData } from 'gatsby-plugin-image'
+
 export type AllContentfulMenuItem = {
-	name?: string
+	name: string
 	price?: string
 	description?: { description: string }
+	image: { description: string; gatsbyImageData: IGatsbyImageData }
 	id: string
 }
 
@@ -20,4 +23,8 @@ export type ContentfulGlobal = {
 	phone: string
 	facebook: string
 	instagram: string
+}
+
+export type ContentfulHomepage = {
+	heroImage: { description: string; gatsbyImageData: IGatsbyImageData }
 }

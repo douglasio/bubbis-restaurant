@@ -1,9 +1,8 @@
 import styled from 'styled-components/macro'
-import { FontSize, FontFamily, FontWeight } from 'styles'
+import { FontSize, FontFamily, FontWeight, Gutters } from 'styles'
+import { Breakpoints, HeaderHeight } from 'styles'
 
 const getTransition = (property: string) => `${property} ease-in 100ms`
-
-export const headerHeight = '3.5rem'
 
 export const Header = styled.header<{ $isSticky?: boolean }>`
 	background-color: ${({ $isSticky, theme }) =>
@@ -12,23 +11,36 @@ export const Header = styled.header<{ $isSticky?: boolean }>`
 			: theme.header.background.default};
 	box-sizing: border-box;
 	display: grid;
-	grid-template-columns: 3fr 1fr;
+	grid-template-columns: 2fr 1fr;
 	grid-template-rows: repeat(2, 1fr);
 	grid-column-gap: 0px;
 	grid-row-gap: 0px;
-	height: ${({ $isSticky }) => ($isSticky ? headerHeight : 'auto')};
+	height: ${({ $isSticky }) =>
+		$isSticky ? HeaderHeight.mobileSticky : HeaderHeight.mobile};
 	margin-bottom: 1rem;
 	overflow-y: visible;
-	padding: 1rem;
+	padding: 0.5rem ${Gutters.mobile};
 	position: sticky;
 	top: 0;
 	transition: ${getTransition('background-color')};
-	z-index: 1;
+	transition-delay: 200ms;
+	z-index: 2;
+
+	@media screen and (min-width: ${Breakpoints.tablet}) {
+		height: ${({ $isSticky }) =>
+			$isSticky ? HeaderHeight.desktopSticky : HeaderHeight.desktop};
+		padding: 1rem ${Gutters.desktop};
+	}
 
 	h1 {
 		font-size: ${({ $isSticky }) =>
 			$isSticky ? FontSize.base : FontSize.heading1};
 		transition: ${getTransition('font-size')};
+
+		a {
+			color: unset;
+			text-decoration: unset;
+		}
 	}
 
 	p {

@@ -7,13 +7,18 @@ export enum FontSize {
 	base = '1rem', // 18px (global.tsx)
 
 	//modifiers
+	smallest = '0.5rem',
+	smaller = '0.7rem',
 	small = '0.9rem',
 	medium = '1.1rem',
 	large = '1.5rem',
+	larger = '1.75rem',
+	largest = '3rem',
 
 	// headings
 	heading1 = '2.25rem',
-	heading2 = '1.75rem',
+	heading2 = '2rem',
+	heading3 = '1.5rem',
 }
 
 export enum FontWeight {

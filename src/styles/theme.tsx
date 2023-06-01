@@ -15,9 +15,9 @@ const defaultTheme: DefaultTheme = {
 			},
 			button: {
 				background: {
-					default: Color.persianOrange,
-					hover: Color.white,
-					active: Color.white,
+					default: Color.guardsman,
+					hover: Color.cinnabar,
+					active: Color.cinnabar,
 				},
 				text: {
 					default: Color.white,
@@ -34,8 +34,8 @@ const defaultTheme: DefaultTheme = {
 	},
 	header: {
 		background: {
-			default: Color.milano,
-			sticky: Color.faluRed,
+			default: Color.pomegranate,
+			sticky: Color.pomegranate,
 		},
 		jumpTo: {
 			button: {
@@ -59,8 +59,27 @@ const defaultTheme: DefaultTheme = {
 			},
 		},
 	},
+	homepage: {
+		intro: {
+			downArrow: {
+				default: Color.white,
+				hover: Color.yolk,
+				active: Color.yolk,
+			},
+		},
+	},
 	footer: {
 		background: Color.faluRed,
+	},
+	menu: {
+		title: {
+			color: Color.white,
+			background: {
+				default: Color.transparent,
+				sticky: Color.pomegranate,
+			},
+		},
+		shadedRow: Color.guardsman,
 	},
 }
 

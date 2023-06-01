@@ -11,14 +11,18 @@ type HeaderProps = {
 
 export const Header = ({ name, description }: HeaderProps) => {
 	const sentinelRef = useRef<HTMLDivElement>(null)
-	const { isSticky } = useStickyObserver(sentinelRef)
+	const { isSticky } = useStickyObserver(sentinelRef, [0])
 
 	return (
 		<>
 			<Styled.Header $isSticky={isSticky}>
-				<h1 className="grid-area-1">{name}</h1>
+				<h1 className="grid-area-1">
+					<a className="plain" href="#top" target="_self">
+						{name}
+					</a>
+				</h1>
 				<p className="grid-area-3">{description.toString()}</p>
-				<JumpTo className="grid-area-2" />
+				{/* <JumpTo className="grid-area-2" /> */}
 			</Styled.Header>
 			<div id="stickySentinel" ref={sentinelRef}></div>
 		</>

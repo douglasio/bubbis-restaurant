@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import { useMountTransition } from 'hooks'
 import * as Styled from './JumpTo.styles'
 import { graphql, useStaticQuery } from 'gatsby'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons'
+import { faSquareCaretDown } from '@fortawesome/free-regular-svg-icons'
 
 type NavProps = {
 	isOpen: boolean
@@ -50,7 +53,7 @@ const Nav = ({ isOpen }: NavProps) => {
 }
 
 type JumpToProps = {
-	className: string
+	className?: string
 }
 
 export const JumpTo = ({ className }: JumpToProps) => {
@@ -58,17 +61,21 @@ export const JumpTo = ({ className }: JumpToProps) => {
 	const handleClick = () => setIsOpen(!isOpen)
 
 	return (
-		<Styled.JumpToWrapper className={className}>
-			<Styled.Button
-				onClick={handleClick}
-				type="button"
-				aria-controls="jumpMenu"
-			>
-				Jump to...
-			</Styled.Button>
+		<>
+			<Styled.JumpToWrapper className={className}>
+				<Styled.Button
+					onClick={handleClick}
+					type="button"
+					aria-controls="jumpMenu"
+					$isOpen={isOpen}
+				>
+					Jump To
+					<FontAwesomeIcon className="icon" icon={faAngleLeft} />
+				</Styled.Button>
+			</Styled.JumpToWrapper>
 			<Styled.NavWrapper aria-hidden={!isOpen} id="jumpMenu">
 				<Nav isOpen={isOpen} />
 			</Styled.NavWrapper>
-		</Styled.JumpToWrapper>
+		</>
 	)
 }

@@ -1,6 +1,7 @@
 export const enum Color {
 	black = '#000',
 	white = '#fff',
+	transparent = 'transparent',
 
 	barnRed = '#70240F',
 	cinnabar = '#E55934',
@@ -12,5 +13,7 @@ export const enum Color {
 	milano = '#9d3535',
 	persianOrange = '#e1965c',
 	pomegranate = '#6d0606',
+	guardsman = '#952c2c',
 	sage = '#B7B868',
+	yolk = '#ffde00',
 }

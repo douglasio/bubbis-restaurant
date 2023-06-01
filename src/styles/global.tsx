@@ -50,6 +50,7 @@ export const GlobalStyle = styled.createGlobalStyle<{ theme: ThemeType }>`
 	}
 
 	* {
+		box-sizing: border-box;
 		margin: 0;
 		padding: 0;
 	}
@@ -61,6 +62,7 @@ export const GlobalStyle = styled.createGlobalStyle<{ theme: ThemeType }>`
 		font-family: ${FontFamily.ysabeau};
 		font-size: 18px;
 		scroll-behavior: smooth;
+		scroll-padding: 3.5rem;
 	}
 
 	h1 {
@@ -71,6 +73,11 @@ export const GlobalStyle = styled.createGlobalStyle<{ theme: ThemeType }>`
 
 	h2 {
 		font-size: ${FontSize.heading2};
+		font-weight: ${FontWeight.bold};
+	}
+
+	h3 {
+		font-size: ${FontSize.heading3};
 		font-weight: ${FontWeight.semibold};
 	}
 
@@ -79,11 +86,26 @@ export const GlobalStyle = styled.createGlobalStyle<{ theme: ThemeType }>`
 		font-size: ${FontSize.base};
 	}
 
-	a {
+	a:not(.plain) {
 		color: ${({ theme }) => theme.global.content.link.default};
 
 		&:hover {
 			color: ${({ theme }) => theme.global.content.link.hover};
+		}
+	}
+
+	button:not(.plain) {
+		border: 0;
+		background-color: ${({ theme }) =>
+			theme.global.content.button.background.default};
+		color: ${({ theme }) => theme.global.content.button.text.default};
+		padding: 0.5em 1em;
+
+		&:hover {
+			background-color: ${({ theme }) =>
+				theme.global.content.button.background.hover};
+			color: ${({ theme }) => theme.global.content.button.text.hover};
+			cursor: pointer;
 		}
 	}
 `
