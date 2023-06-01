@@ -1,13 +1,13 @@
 import React, { useRef } from 'react'
-import { useStickyObserver } from 'hooks'
-import { JumpTo } from 'components'
-import * as Styled from './Header.styles'
-import { ContentfulGlobal } from 'contentful.types'
-import { graphql, useStaticQuery } from 'gatsby'
+import { graphql, Link, useStaticQuery } from 'gatsby'
 import { getImage } from 'gatsby-plugin-image'
-import { HeaderSize } from 'components/Header/types'
+import { useStickyObserver } from 'hooks'
+import { NavMenu } from 'components'
 import { SVG } from 'svgs'
 import { Color } from 'styles'
+import { ContentfulGlobal } from 'contentful.types'
+import * as Styled from './Header.styles'
+import { HeaderSize } from 'components/Header/types'
 
 type HeaderProps = {
 	name: ContentfulGlobal['name']
@@ -59,7 +59,11 @@ export const Header = ({ name, description, size }: HeaderProps) => {
 					</h1>
 					<p className="grid-area-3">{description.toString()}</p>
 				</Styled.Content>
-				{/* <JumpTo className="grid-area-2" /> */}
+				<NavMenu>
+					<Link to="/">Home</Link>
+					<Link to="/#menu">Menu</Link>
+					<Link to="/location">Location</Link>
+				</NavMenu>
 			</Styled.Header>
 			<div id="stickySentinel" ref={sentinelRef}></div>
 		</>

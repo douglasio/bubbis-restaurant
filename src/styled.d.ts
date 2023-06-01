@@ -86,5 +86,28 @@ declare module 'styled-components' {
 			shadedRow: Color
 			divider: Color
 		}
+		nav: {
+			mobile: {
+				toggle: {
+					background: Color
+					text: Color
+				}
+				list: {
+					background: Color
+					text: {
+						default: Color
+						hover: Color
+					}
+					link: {
+						default: {
+							text: Color
+						}
+						hover: {
+							background: Color
+						}
+					}
+				}
+			}
+		}
 	}
 }

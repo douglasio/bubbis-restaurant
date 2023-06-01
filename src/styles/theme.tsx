@@ -85,6 +85,29 @@ const defaultTheme: DefaultTheme = {
 		shadedRow: Color.guardsman,
 		divider: Color.sunset,
 	},
+	nav: {
+		mobile: {
+			toggle: {
+				background: Color.transparent,
+				text: Color.white,
+			},
+			list: {
+				background: Color.pomegranate,
+				text: {
+					default: Color.white,
+					hover: Color.persianOrange,
+				},
+				link: {
+					default: {
+						text: Color.white,
+					},
+					hover: {
+						background: Color.jasper,
+					},
+				},
+			},
+		},
+	},
 }
 
 export const theme = {

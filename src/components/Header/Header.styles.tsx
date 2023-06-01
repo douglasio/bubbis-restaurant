@@ -44,7 +44,7 @@ export const Header = styled.header<{ $isSticky?: boolean }>`
 	}
 
 	p {
-		font-size: ${FontSize.small};
+		font-size: ${FontSize.medium};
 		font-family: ${FontFamily.ysabeau};
 		font-weight: ${FontWeight.medium};
 		height: ${({ $isSticky }) => ($isSticky ? 0 : 'auto')};
