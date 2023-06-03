@@ -16,12 +16,12 @@ export enum FontSize {
 	largest = '3rem',
 
 	// headings
-	heading1 = '2.25rem',
-	heading2 = '2rem',
+	heading1 = '2.5rem',
+	heading2 = '2.25rem',
 	heading3 = '1.5rem',
 
 	//hero
-	hero1 = '5rem',
+	hero1 = '2.25rem',
 	hero2 = '2rem',
 	hero3 = '1.5rem',
 }

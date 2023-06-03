@@ -2,6 +2,7 @@ import React, { ReactNode, useState } from 'react'
 import { faBars, faClose } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useMountTransition } from 'hooks'
+import { SVG } from 'svgs'
 import * as Styled from './NavMenu.styles'
 
 type NavMenuProps = {
@@ -16,7 +17,6 @@ export const NavMenu = ({ children }: NavMenuProps) => {
 		setIsOpen(!isOpen)
 	}
 
-	console.log(isOpen)
 	return (
 		<>
 			<Styled.Desktop>Desktop {children}</Styled.Desktop>
@@ -38,6 +38,7 @@ export const NavMenu = ({ children }: NavMenuProps) => {
 						<>
 							<Styled.Shade $isVisible={hasTransitionedIn && isOpen} />
 							<Styled.Dropdown $isVisible={hasTransitionedIn && isOpen}>
+								<SVG.Pomegranate className="section-heading-svg" />
 								<nav className="nav">{children}</nav>
 								<footer className="nav-footer">Pomegranate</footer>
 							</Styled.Dropdown>

@@ -66,6 +66,14 @@ const defaultTheme: DefaultTheme = {
 				hover: Color.yolk,
 				active: Color.yolk,
 			},
+			box: {
+				default: {
+					background: Color.guardsman,
+				},
+				featured: {
+					background: Color.transparent,
+				},
+			},
 		},
 	},
 	footer: {
@@ -107,6 +115,9 @@ const defaultTheme: DefaultTheme = {
 				},
 			},
 		},
+	},
+	businessHours: {
+		text: Color.chewingGum,
 	},
 }
 

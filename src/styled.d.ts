@@ -67,6 +67,14 @@ declare module 'styled-components' {
 					hover: Color
 					active: Color
 				}
+				box: {
+					default: {
+						background: Color
+					}
+					featured: {
+						background: Color
+					}
+				}
 			}
 		}
 		footer: {
@@ -108,6 +116,9 @@ declare module 'styled-components' {
 					}
 				}
 			}
+		}
+		businessHours: {
+			text: Color
 		}
 	}
 }

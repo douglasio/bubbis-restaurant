@@ -49,45 +49,66 @@ export const Section = styled.section`
 	}
 `
 
-export const Intro = styled.div`
-	padding: ${Gutters.mobile};
-	/* position: absolute; */
-	text-align: center;
-	/* top: ${HeaderHeight.mobile}; */
-	/* width: 100%; */
-	/* z-index: 1; */
+export const DesktopIntro = styled.div`
+	display: none;
+	grid-template-columns: repeat(3, 1fr);
+	grid-column-gap: 2rem;
+	padding: 2rem ${Gutters.mobile} 2rem;
 
-	.intro-nav {
-		align-items: stretch;
-		display: grid;
-		grid-auto-flow: row;
-		grid-auto-columns: 1fr;
-		grid-auto-rows: 1fr;
-		grid-row-gap: 1rem;
-		justify-content: space-between;
-		margin: 2rem auto;
-		width: 50%;
-
-		> a {
-			display: grid;
-			font-size: ${FontSize.large};
-			font-weight: ${FontWeight.bold};
-			line-height: 1em;
-			padding: 1.5rem 2rem;
-			place-content: center;
-			text-decoration: none;
-		}
+	.intro-box {
+		background-color: ${({ theme }) =>
+			theme.homepage.intro.box.default.background};
+		padding: 1rem;
+		text-align: center;
 	}
 
-	.intro-text {
+	.intro-box--feature,
+	.intro-box--feature p {
 		font-size: ${FontSize.hero3};
+		font-weight: ${FontWeight.light};
 		line-height: 1.1em;
 	}
 
+	.intro-box--feature {
+		background-color: ${({ theme }) =>
+			theme.homepage.intro.box.featured.background};
+		padding: 0;
+	}
+
 	@media screen and (min-width: ${Breakpoints.tablet}) {
+		display: grid;
 		padding-left: ${Gutters.tablet};
 		padding-right: ${Gutters.tablet};
 		top: ${HeaderHeight.desktop};
+	}
+
+	@media screen and (min-width: ${Breakpoints.desktop}) {
+		padding-left: ${Gutters.desktop};
+		padding-right: ${Gutters.desktop};
+	}
+`
+
+export const MobileIntro = styled.div`
+	margin: 1rem auto;
+	text-align: center;
+	width: 75%;
+
+	> a {
+		display: grid;
+		font-size: ${FontSize.large};
+		font-weight: ${FontWeight.bold};
+		line-height: 1em;
+		padding: 1.5rem 2rem;
+		place-content: center;
+		text-decoration: none;
+	}
+
+	@media screen and (min-width: ${Breakpoints.tablet}) {
+		display: none;
+		padding-left: ${Gutters.tablet};
+		padding-right: ${Gutters.tablet};
+		top: ${HeaderHeight.desktop};
+		width: 50%;
 
 		.intro-nav {
 			grid-auto-flow: column;
@@ -95,10 +116,5 @@ export const Intro = styled.div`
 			grid-template-rows: 1fr;
 			grid-column-gap: 1rem;
 		}
-	}
-
-	@media screen and (min-width: ${Breakpoints.desktop}) {
-		padding-left: ${Gutters.desktop};
-		padding-right: ${Gutters.desktop};
 	}
 `

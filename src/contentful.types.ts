@@ -1,4 +1,5 @@
 import type { IGatsbyImageData } from 'gatsby-plugin-image'
+import type { WeekdayType } from 'utils'
 
 export type AllContentfulMenuItem = {
 	name: string
@@ -20,6 +21,15 @@ export type AllContentfulMenu = {
 export type ContentfulGlobal = {
 	name: string
 	description: { description: string }
+	addressText: {
+		addressText: string
+	}
+	hours: {
+		hours: string
+	}
+	hoursObject: {
+		hours: Array<{ day: WeekdayType; startHour: number; endHour: number }>
+	}
 	phone: string
 	facebook: string
 	instagram: string

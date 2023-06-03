@@ -34,7 +34,7 @@ export const Header = styled.header<{ $isSticky?: boolean }>`
 
 	h1 {
 		font-size: ${({ $isSticky }) =>
-			$isSticky ? FontSize.base : FontSize.heading1};
+			$isSticky ? FontSize.base : FontSize.hero1};
 		transition: ${getTransition('font-size')};
 
 		a {
