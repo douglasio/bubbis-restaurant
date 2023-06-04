@@ -13,12 +13,12 @@ type NavMenuStyleProps = {
 	$isVisible: boolean
 }
 
-const TOGGLE_SIZE = '2rem'
+const TOGGLE_SIZE = '1.75rem'
 
 export const Desktop = styled.div<{ $isSticky: boolean }>`
 	display: none;
 	position: absolute;
-	right: 1rem;
+	right: ${Gutters.mobile};
 	top: ${({ $isSticky }) => ($isSticky ? '50%' : '0.25rem')};
 	transform: ${({ $isSticky }) => ($isSticky ? 'translateY(-50%)' : '0')};
 	z-index: 4;
@@ -33,8 +33,17 @@ export const Desktop = styled.div<{ $isSticky: boolean }>`
 		}
 	}
 
+	@media screen and (min-width: ${Breakpoints.tablet}) {
+		/* right: ${Gutters.tablet}; */
+	}
+
 	@media screen and (min-width: ${Breakpoints.desktop}) {
 		display: block;
+		right: ${Gutters.desktop};
+	}
+
+	@media screen and (min-width: ${Breakpoints.ultrawide}) {
+		right: ${Gutters.ultrawide};
 	}
 `
 
@@ -62,7 +71,7 @@ export const Toggle = styled.button`
 	height: ${TOGGLE_SIZE};
 	position: absolute;
 	right: 0;
-	top: 0.25rem;
+	top: calc(${TOGGLE_SIZE} / 5);
 	width: ${TOGGLE_SIZE};
 	z-index: 5;
 

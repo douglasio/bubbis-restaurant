@@ -7,15 +7,14 @@ export type AllContentfulMenuItem = {
 	description?: { description: string }
 	image: { description: string; gatsbyImageData: IGatsbyImageData }
 	id: string
+	pronunciation: string
 }
 
-export type AllContentfulMenu = {
-	nodes: Array<{
-		title: string
-		id: string
-		slug: string
-		items: Array<AllContentfulMenuItem>
-	}>
+export type ContentfulMenu = {
+	title: string
+	id: string
+	slug: string
+	items: Array<AllContentfulMenuItem>
 }
 
 export type ContentfulGlobal = {
@@ -31,14 +30,25 @@ export type ContentfulGlobal = {
 		hours: Array<{ day: WeekdayType; startHour: number; endHour: number }>
 	}
 	phone: string
+	email: string
 	facebook: string
 	instagram: string
 }
 
 export type ContentfulHomepage = {
-	heading: string
+	title: string
 	heroImage: { description: string; gatsbyImageData: IGatsbyImageData }
+	heroImages: Array<{ description: string; gatsbyImageData: IGatsbyImageData }>
 	introText: {
 		introText: string
 	}
+	menus: ContentfulMenu[]
+}
+
+export type ContentfulLocationPage = {
+	title: string
+	images: Array<{
+		description: string
+		gatsbyImageData: IGatsbyImageData
+	}>
 }

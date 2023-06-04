@@ -1,21 +1,15 @@
 import React, { Fragment, useRef, type ReactNode } from 'react'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { useStickyObserver } from 'hooks'
-import type { AllContentfulMenuItem } from 'contentful.types'
+import type { AllContentfulMenuItem, ContentfulMenu } from 'contentful.types'
 import * as Styled from './Menu.styles'
-import { JumpTo } from 'components/JumpTo'
+import Markdown from 'markdown-to-jsx'
 
 type MenuProps = {
-	menus: MenuSectionProps[]
+	menus: ContentfulMenu[]
 }
 
-type MenuSectionProps = {
-	id: string
-	children?: ReactNode
-	slug?: string
-	items: AllContentfulMenuItem[]
-	title: string
-}
+type MenuSectionProps = ContentfulMenu
 
 const MenuSection = ({ title, slug, items }: MenuSectionProps) => {
 	const sentinelRef = useRef<HTMLDivElement>(null)
@@ -43,7 +37,9 @@ const MenuSection = ({ title, slug, items }: MenuSectionProps) => {
 								<div className="name">{name}</div>
 								<div className="price">{price}</div>
 								{description && (
-									<div className="description">{description.description}</div>
+									<div className="description">
+										<Markdown>{description.description}</Markdown>
+									</div>
 								)}
 							</Styled.MenuItem>
 						</Fragment>

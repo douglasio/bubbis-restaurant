@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { default as MarkdownToJSX } from 'markdown-to-jsx'
 
 const StyledMarkdown = styled(MarkdownToJSX)`
-	white-space: pre-wrap;
+	white-space: pre-line;
 `
 
 type MarkdownProps = {

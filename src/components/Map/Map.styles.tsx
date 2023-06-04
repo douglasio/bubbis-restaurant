@@ -2,11 +2,6 @@ import styled from 'styled-components'
 import { FontWeight } from 'styles'
 
 export const Wrapper = styled.figure`
-	display: inline-block;
-	background-color: ${({ theme }) => theme.map.background};
-	margin: 1rem 0;
-	padding: 1rem;
-
 	figcaption {
 		text-align: right;
 		a {

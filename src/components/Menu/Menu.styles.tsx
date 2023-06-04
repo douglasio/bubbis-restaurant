@@ -7,7 +7,9 @@ const MENU_GUTTERS = {
 	tablet: `calc(${Gutters.tablet} + 10rem)`,
 }
 
-export const Menu = styled.div``
+export const Menu = styled.div`
+	margin-bottom: 5rem;
+`
 
 export const MenuSection = styled.section`
 	margin-top: 2rem;
@@ -46,6 +48,11 @@ export const Title = styled.header<{ $isSticky: boolean }>`
 		padding-left: ${Gutters.desktop};
 		padding-right: ${Gutters.desktop};
 	}
+
+	@media screen and (min-width: ${Breakpoints.ultrawide}) {
+		padding-left: ${Gutters.ultrawide};
+		padding-right: ${Gutters.ultrawide};
+	}
 `
 
 export const List = styled.ul`
@@ -60,11 +67,12 @@ export const List = styled.ul`
 `
 
 export const MenuItem = styled.li<{ $hasImage: boolean }>`
+	align-items: start;
 	display: grid;
 	grid-template-columns: fit-content(200px) 2fr auto;
-	grid-template-rows: repeat(2, auto);
+	grid-template-rows: repeat(2, min-content);
 	grid-template-areas: 'name image price description';
-	grid-gap: 0.5rem 1rem;
+	grid-gap: 1rem 1rem;
 	padding: 1rem ${MENU_GUTTERS.mobile};
 
 	> * {
@@ -79,7 +87,9 @@ export const MenuItem = styled.li<{ $hasImage: boolean }>`
 	}
 
 	.image {
+		background-color: ${({ theme }) => theme.menu.image.background};
 		grid-area: 1 / 1 / 4 / 2;
+		padding: 0.5rem;
 	}
 
 	.price {
@@ -91,16 +101,32 @@ export const MenuItem = styled.li<{ $hasImage: boolean }>`
 	.description {
 		grid-area: ${({ $hasImage }) =>
 			$hasImage ? '2 / 2 / 3 / 3' : '2 / 1 / 3 / 3'};
+
+		p {
+			margin: 0;
+			p + p {
+				margin: 1em 0;
+			}
+		}
 	}
 
 	@media screen and (max-width: ${Breakpoints.tablet}) {
 		&:nth-of-type(odd) {
-			background-color: ${({ theme }) => theme.menu.shadedRow};
+			background-color: ${({ theme }) => theme.menu.shadedRow.background};
+
+			.image {
+				background-color: ${({ theme }) =>
+					theme.menu.shadedRow.image.background};
+			}
 		}
 	}
 
 	@media screen and (min-width: ${Breakpoints.tablet}) {
 		padding: 1rem ${Gutters.tablet} 1rem ${Gutters.tablet};
+
+		.image {
+			padding: 1rem;
+		}
 
 		&:nth-of-type(odd) {
 			grid-column: 1;
@@ -115,5 +141,10 @@ export const MenuItem = styled.li<{ $hasImage: boolean }>`
 	@media screen and (min-width: ${Breakpoints.desktop}) {
 		padding-left: ${Gutters.desktop};
 		padding-right: ${Gutters.desktop};
+	}
+
+	@media screen and (min-width: ${Breakpoints.ultrawide}) {
+		padding-left: ${Gutters.ultrawide};
+		padding-right: ${Gutters.ultrawide};
 	}
 `

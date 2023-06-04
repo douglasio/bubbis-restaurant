@@ -1,3 +1,4 @@
+export * from './Box'
 export * from './BusinessHours'
 export * from './Footer'
 export * from './Header'

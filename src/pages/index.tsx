@@ -1,9 +1,9 @@
 import React from 'react'
 import { graphql, Link, type HeadProps, type PageProps } from 'gatsby'
 
-import { BusinessHours, Markdown, Menu, Layout } from 'components'
+import { BusinessHours, Markdown, Menu, Layout, Box } from 'components'
 import type {
-	AllContentfulMenu,
+	ContentfulMenu,
 	ContentfulGlobal,
 	ContentfulHomepage,
 } from 'contentful.types'
@@ -11,7 +11,7 @@ import * as Styled from './index.styles'
 import { GOOGLE_MAPS_LINKS } from 'utils'
 
 interface IndexPageProps {
-	allContentfulMenu: AllContentfulMenu
+	allContentfulMenu: ContentfulMenu
 	contentfulGlobal: ContentfulGlobal
 	contentfulHomepage: ContentfulHomepage
 }
@@ -21,12 +21,11 @@ const IndexPage = ({ data }: PageProps<IndexPageProps>) => {
 		contentfulGlobal: {
 			addressText: { addressText },
 			hours: { hours },
-			hoursObject,
 		},
 		contentfulHomepage: {
 			introText: { introText },
+			menus,
 		},
-		allContentfulMenu: { nodes: menus },
 	} = data
 
 	return (
@@ -34,21 +33,16 @@ const IndexPage = ({ data }: PageProps<IndexPageProps>) => {
 			<Styled.Section className="intro">
 				<h1>Restaurant</h1>
 				<Styled.DesktopIntro>
-					<div className="intro-box intro-box--feature">
+					<Box className="intro-box intro-box--feature">
 						<Markdown>{introText}</Markdown>
-					</div>
-
-					<div className="intro-box">
+					</Box>
+					<Box className="intro-box">
 						<Markdown href={GOOGLE_MAPS_LINKS.map}>{addressText}</Markdown>
-						{/* <p>
-							<a href={GOOGLE_MAPS_LINKS.directions}>Get directions</a>
-						</p> */}
-					</div>
-
-					<div className="intro-box">
+					</Box>
+					<Box className="intro-box">
 						<Markdown>{hours}</Markdown>
 						<BusinessHours />
-					</div>
+					</Box>
 				</Styled.DesktopIntro>
 				<Styled.MobileIntro>
 					<Link className="button" to="location">
@@ -72,12 +66,15 @@ export const Head = ({
 	data: {
 		contentfulGlobal: { name },
 		contentfulHomepage: {
+			title,
 			introText: { introText },
 		},
 	},
 }: HeadProps<IndexPageProps>) => (
 	<>
-		<title>{name}</title>
+		<title>
+			{name} {name}
+		</title>
 		<meta name="description" content={introText} />
 	</>
 )
@@ -101,13 +98,11 @@ export const query = graphql`
 			}
 		}
 		contentfulHomepage {
-			heading
+			title
 			introText {
 				introText
 			}
-		}
-		allContentfulMenu(sort: { createdAt: ASC }) {
-			nodes {
+			menus {
 				title
 				slug
 				id
@@ -122,6 +117,7 @@ export const query = graphql`
 						gatsbyImageData(layout: FIXED, height: 75, width: 100)
 					}
 					id
+					pronunciation
 				}
 			}
 		}

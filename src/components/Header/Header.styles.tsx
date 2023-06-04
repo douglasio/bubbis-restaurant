@@ -124,4 +124,9 @@ export const Content = styled.div`
 		left: ${Gutters.desktop};
 		width: calc(100% - ${Gutters.desktop});
 	}
+
+	@media screen and (min-width: ${Breakpoints.ultrawide}) {
+		left: ${Gutters.ultrawide};
+		width: calc(100% - ${Gutters.ultrawide});
+	}
 `

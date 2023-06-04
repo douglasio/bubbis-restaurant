@@ -88,7 +88,15 @@ declare module 'styled-components' {
 					sticky: Color
 				}
 			}
-			shadedRow: Color
+			image: {
+				background: Color
+			}
+			shadedRow: {
+				background: Color
+				image: {
+					background: color
+				}
+			}
 			divider: Color
 		}
 		nav: {
@@ -125,6 +133,9 @@ declare module 'styled-components' {
 		}
 		businessHours: {
 			text: Color
+		}
+		box: {
+			background: Color
 		}
 	}
 }

@@ -8,6 +8,7 @@ import { Color } from 'styles'
 import { ContentfulGlobal } from 'contentful.types'
 import * as Styled from './Header.styles'
 import { HeaderSize } from 'components/Header/types'
+import { shuffleNumbers } from 'utils'
 
 type HeaderProps = {
 	name: ContentfulGlobal['name']
@@ -19,11 +20,11 @@ export const Header = ({ name, description, size }: HeaderProps) => {
 	const data = useStaticQuery(graphql`
 		query headerQuery {
 			contentfulHomepage {
-				heroImage {
+				heroImages {
 					description
 					gatsbyImageData(
 						layout: FULL_WIDTH
-						placeholder: TRACED_SVG
+						placeholder: DOMINANT_COLOR
 						resizingBehavior: FILL
 					)
 				}
@@ -33,9 +34,11 @@ export const Header = ({ name, description, size }: HeaderProps) => {
 	const sentinelRef = useRef<HTMLDivElement>(null)
 	const { isSticky: isStickyObserver } = useStickyObserver(sentinelRef, [0])
 
-	const { heroImage } = data.contentfulHomepage
+	const { heroImages } = data.contentfulHomepage
 
-	const isSticky = isStickyObserver || size === 'sticky'
+	const isSticky = isStickyObserver || size === 'sticky',
+		randomNumber = shuffleNumbers(0, heroImages.length - 1),
+		heroImage = heroImages[randomNumber]
 
 	return (
 		<>

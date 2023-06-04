@@ -70,7 +70,7 @@ const defaultTheme: DefaultTheme = {
 		},
 	},
 	footer: {
-		background: Color.faluRed,
+		background: Color.bulgarianRose,
 	},
 	map: {
 		background: Color.guardsman,
@@ -87,7 +87,15 @@ const defaultTheme: DefaultTheme = {
 				sticky: Color.pomegranate,
 			},
 		},
-		shadedRow: Color.guardsman,
+		image: {
+			background: Color.guardsman,
+		},
+		shadedRow: {
+			background: Color.guardsman,
+			image: {
+				background: Color.milano,
+			},
+		},
 		divider: Color.sunset,
 	},
 	nav: {
@@ -123,6 +131,9 @@ const defaultTheme: DefaultTheme = {
 	},
 	businessHours: {
 		text: Color.chewingGum,
+	},
+	box: {
+		background: Color.guardsman,
 	},
 }
 

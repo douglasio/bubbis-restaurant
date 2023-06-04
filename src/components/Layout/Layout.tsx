@@ -21,6 +21,7 @@ export const Layout: React.FC<LayoutProps> = (props) => {
 					description
 				}
 				phone
+				email
 				facebook
 				instagram
 			}
@@ -31,6 +32,7 @@ export const Layout: React.FC<LayoutProps> = (props) => {
 		name,
 		description: { description },
 		phone,
+		email,
 		facebook,
 		instagram,
 	} = data.contentfulGlobal
@@ -45,6 +47,7 @@ export const Layout: React.FC<LayoutProps> = (props) => {
 				<Footer
 					name={name}
 					phone={phone}
+					email={email}
 					facebook={facebook}
 					instagram={instagram}
 				/>

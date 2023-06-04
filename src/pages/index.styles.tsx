@@ -24,6 +24,14 @@ export const Section = styled.section`
 		z-index: 1;
 	}
 
+	p {
+		margin: 1.25em 0;
+
+		&:first-of-type {
+			margin-top: 0;
+		}
+	}
+
 	.section-heading-svg {
 		margin-left: -1em;
 		margin-right: 0.2em;
@@ -49,18 +57,56 @@ export const Subsection = styled.div`
 	padding: 1rem ${Gutters.mobile};
 
 	h2 {
-		padding: 1rem 0;
+		padding: 0;
 		text-align: left;
 	}
 
 	@media screen and (min-width: ${Breakpoints.tablet}) {
+		padding-bottom: 2rem;
 		padding-left: ${Gutters.tablet};
 		padding-right: ${Gutters.tablet};
+		padding-top: 2rem;
 	}
 
 	@media screen and (min-width: ${Breakpoints.desktop}) {
 		padding-left: ${Gutters.desktop};
 		padding-right: ${Gutters.desktop};
+	}
+
+	@media screen and (min-width: ${Breakpoints.ultrawide}) {
+		padding-left: ${Gutters.ultrawide};
+		padding-right: ${Gutters.ultrawide};
+	}
+`
+
+export const SubsectionGrid = styled.div`
+	display: grid;
+	grid-gap: ${Gutters.mobile};
+	padding: 0 ${Gutters.mobile};
+
+	// no gutters on subsections
+	> * > * {
+		padding-left: unset;
+		padding-right: unset;
+	}
+
+	@media screen and (min-width: ${Breakpoints.tablet}) {
+		grid-auto-flow: column;
+		grid-gap: ${Gutters.tablet};
+		padding-left: ${Gutters.tablet};
+		padding-right: ${Gutters.tablet};
+	}
+
+	@media screen and (min-width: ${Breakpoints.desktop}) {
+		grid-gap: ${Gutters.desktop};
+		padding-left: ${Gutters.desktop};
+		padding-right: ${Gutters.desktop};
+	}
+
+	@media screen and (min-width: ${Breakpoints.ultrawide}) {
+		grid-gap: ${Gutters.ultrawide};
+		padding-left: ${Gutters.ultrawide};
+		padding-right: ${Gutters.ultrawide};
 	}
 `
 
@@ -71,11 +117,8 @@ export const DesktopIntro = styled.div`
 	padding: 2rem ${Gutters.mobile} 2rem;
 
 	.intro-box {
-		align-content: center;
 		background-color: ${({ theme }) =>
 			theme.homepage.intro.box.default.background};
-		display: grid;
-		padding: 1rem;
 		text-align: center;
 	}
 
@@ -104,6 +147,11 @@ export const DesktopIntro = styled.div`
 		max-width: ${Breakpoints.ultrawide};
 		padding-left: ${Gutters.desktop};
 		padding-right: ${Gutters.desktop};
+	}
+
+	@media screen and (min-width: ${Breakpoints.ultrawide}) {
+		padding-left: ${Gutters.ultrawide};
+		padding-right: ${Gutters.ultrawide};
 	}
 `
 
@@ -135,5 +183,16 @@ export const MobileIntro = styled.div`
 			grid-template-rows: 1fr;
 			grid-column-gap: 1rem;
 		}
+	}
+`
+
+export const ImageGrid = styled.div`
+	display: grid;
+	grid-auto-flow: row;
+	grid-gap: 1rem;
+	margin: 1rem 0;
+
+	img {
+		filter: sepia(0.3);
 	}
 `
