@@ -1,49 +1,29 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby Minimal TypeScript Starter
+<h1>
+  Restaurant Website with Gatsby + Contentful
 </h1>
 
-## 🚀 Quick start
+## What is this?
 
-1.  **Create a Gatsby site.**
+A simple CMS-driven website that could be used by a small restaurant. No more pages than necessary, simple to navigate, and branded to fit the aesthetic of the eatery.
 
-    Use the Gatsby CLI to create a new site, specifying the minimal TypeScript starter.
+## Why build it?
 
-    ```shell
-    # create a new Gatsby site using the minimal TypeScript starter
-    npm init gatsby -- -ts
-    ```
+Restaurant websites are always so difficult to navigate. Just show me where you are, when you're open, and what's on your menu! Using an existing local restaurant's website as inspiration, I redesign and rebuilt it using better design practices for usability, accessibility, and maintainability.
 
-2.  **Start developing.**
+## Why this stack?
 
-    Navigate into your new site’s directory and start it up.
+### Gatsby (with TypeScript)
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+Gatsby's native integration with GraphQL makes sourcing data from Contentful's API fairly intuitive. Given the simplicity of the site itself, static pages will be the most performant option, especially for visitors browsing on mobile&mdash;say, when looking at the menu on their phone at the restaurant.
 
-3.  **Open the code and start customizing!**
+### Contentful
 
-    Your site is now running at http://localhost:8000!
+Menus and page content are simple data structure but may need frequent edits. Using content models mapped to components rather than freeform WYSIWYG editors, we can enable site maintainers of any technical skill level to edit their site without worrying about breaking formatting.
 
-    Edit `src/pages/index.tsx` to see your site update in real-time!
+### Netlify
 
-4.  **Learn more**
+Fast and easy deployments, simple set-up, well-documented support for build hooks from Contentful and Github.
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Tutorials](https://www.gatsbyjs.com/docs/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Guides](https://www.gatsbyjs.com/docs/how-to/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
+### Styled Components
 
-## 🚀 Quick start (Netlify)
-
-Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
-
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-minimal-ts)
+Styled components' theming options make it easier to reuse this website template for updated branding or even other restaurants.
