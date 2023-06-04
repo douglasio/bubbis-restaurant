@@ -8,8 +8,6 @@ export type UseWorldTimeHook = {
 	loading: boolean
 }
 
-// type WorldTimeData = {}
-
 export const useWorldTime = (): UseWorldTimeHook => {
 	const [loading, setLoading] = useState(false)
 	const [worldTimeData, setWorldTimeData] = useState<WorldTimeData>(null)

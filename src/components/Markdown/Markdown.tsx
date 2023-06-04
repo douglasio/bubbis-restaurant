@@ -8,8 +8,13 @@ const StyledMarkdown = styled(MarkdownToJSX)`
 
 type MarkdownProps = {
 	children: string
+	href?: string // add link to entire text block
 }
 
-export const Markdown = ({ children }: MarkdownProps) => {
-	return <StyledMarkdown>{children}</StyledMarkdown>
+export const Markdown = ({ children, href }: MarkdownProps) => {
+	return (
+		<StyledMarkdown>
+			{href ? `[${children}](${href})` : children}
+		</StyledMarkdown>
+	)
 }

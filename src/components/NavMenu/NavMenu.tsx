@@ -1,15 +1,16 @@
 import React, { ReactNode, useState } from 'react'
+import { Link } from 'gatsby'
 import { faBars, faClose } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useMountTransition } from 'hooks'
-import { SVG } from 'svgs'
 import * as Styled from './NavMenu.styles'
 
 type NavMenuProps = {
-	children: ReactNode
+	// children?: ReactNode
+	isSticky: boolean
 }
 
-export const NavMenu = ({ children }: NavMenuProps) => {
+export const NavMenu = ({ isSticky }: NavMenuProps) => {
 	const [isOpen, setIsOpen] = useState<boolean>(false)
 	const { hasTransitionedIn } = useMountTransition(isOpen, 500)
 
@@ -19,7 +20,13 @@ export const NavMenu = ({ children }: NavMenuProps) => {
 
 	return (
 		<>
-			<Styled.Desktop>Desktop {children}</Styled.Desktop>
+			<Styled.Desktop $isSticky={isSticky}>
+				<nav className="nav">
+					<Link to="/">Home</Link>
+					<Link to="/#menu">Menu</Link>
+					<Link to="/location">Location</Link>
+				</nav>
+			</Styled.Desktop>
 			<Styled.Mobile>
 				<Styled.Toggle
 					aria-controls="mobileNavList"
@@ -38,9 +45,13 @@ export const NavMenu = ({ children }: NavMenuProps) => {
 						<>
 							<Styled.Shade $isVisible={hasTransitionedIn && isOpen} />
 							<Styled.Dropdown $isVisible={hasTransitionedIn && isOpen}>
-								<SVG.Pomegranate className="section-heading-svg" />
-								<nav className="nav">{children}</nav>
+								<nav className="nav">
+									<Link to="/">Home</Link>
+									<Link to="/#menu">Menu</Link>
+									<Link to="/location">Location</Link>
+								</nav>
 								<footer className="nav-footer">Pomegranate</footer>
+								<Styled.NavBackground />
 							</Styled.Dropdown>
 						</>
 					)}

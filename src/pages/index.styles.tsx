@@ -1,5 +1,5 @@
 import { GatsbyImage } from 'gatsby-plugin-image'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import {
 	Breakpoints,
 	FontSize,
@@ -10,11 +10,11 @@ import {
 
 export const Section = styled.section`
 	&:first-of-type {
-		margin-top: -${HeaderHeight.mobile};
+		margin-top: 1rem;
 	}
 
-	&.intro {
-		padding-top: ${HeaderHeight.mobile};
+	h1 {
+		text-align: center;
 	}
 
 	h2 {
@@ -31,10 +31,6 @@ export const Section = styled.section`
 	}
 
 	@media screen and (min-width: ${Breakpoints.tablet}) {
-		&:first-of-type {
-			padding-top: ${HeaderHeight.desktop};
-		}
-
 		h2 {
 			padding-left: ${Gutters.tablet};
 			padding-right: ${Gutters.tablet};
@@ -49,6 +45,25 @@ export const Section = styled.section`
 	}
 `
 
+export const Subsection = styled.div`
+	padding: 1rem ${Gutters.mobile};
+
+	h2 {
+		padding: 1rem 0;
+		text-align: left;
+	}
+
+	@media screen and (min-width: ${Breakpoints.tablet}) {
+		padding-left: ${Gutters.tablet};
+		padding-right: ${Gutters.tablet};
+	}
+
+	@media screen and (min-width: ${Breakpoints.desktop}) {
+		padding-left: ${Gutters.desktop};
+		padding-right: ${Gutters.desktop};
+	}
+`
+
 export const DesktopIntro = styled.div`
 	display: none;
 	grid-template-columns: repeat(3, 1fr);
@@ -56,8 +71,10 @@ export const DesktopIntro = styled.div`
 	padding: 2rem ${Gutters.mobile} 2rem;
 
 	.intro-box {
+		align-content: center;
 		background-color: ${({ theme }) =>
 			theme.homepage.intro.box.default.background};
+		display: grid;
 		padding: 1rem;
 		text-align: center;
 	}
@@ -77,19 +94,21 @@ export const DesktopIntro = styled.div`
 
 	@media screen and (min-width: ${Breakpoints.tablet}) {
 		display: grid;
+		margin: 0 auto 2rem;
 		padding-left: ${Gutters.tablet};
 		padding-right: ${Gutters.tablet};
 		top: ${HeaderHeight.desktop};
 	}
 
 	@media screen and (min-width: ${Breakpoints.desktop}) {
+		max-width: ${Breakpoints.ultrawide};
 		padding-left: ${Gutters.desktop};
 		padding-right: ${Gutters.desktop};
 	}
 `
 
 export const MobileIntro = styled.div`
-	margin: 1rem auto;
+	margin: 2rem auto;
 	text-align: center;
 	width: 75%;
 

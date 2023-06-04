@@ -3,6 +3,11 @@
 	"version": "1.0.0",
 	"private": true,
 	"description": "bubbis-restaurant",
+	"author": {
+		"name": "Douglas Odell",
+		"email": "douglasio711@gmail.com",
+		"url": "https://douglas-odell.netlify.app/"
+	},
 	"keywords": [
 		"gatsby"
 	],

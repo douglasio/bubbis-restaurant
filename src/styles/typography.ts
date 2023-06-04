@@ -21,8 +21,8 @@ export enum FontSize {
 	heading3 = '1.5rem',
 
 	//hero
-	hero1 = '2.25rem',
-	hero2 = '2rem',
+	hero1 = 'calc(1rem + 6vw)',
+	hero2 = 'calc(1rem + 1vw)',
 	hero3 = '1.5rem',
 }
 

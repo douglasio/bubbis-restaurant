@@ -31,13 +31,18 @@ export const Header = ({ name, description, size }: HeaderProps) => {
 		}
 	`)
 	const sentinelRef = useRef<HTMLDivElement>(null)
-	const { isSticky } = useStickyObserver(sentinelRef, [0])
+	const { isSticky: isStickyObserver } = useStickyObserver(sentinelRef, [0])
 
 	const { heroImage } = data.contentfulHomepage
 
+	const isSticky = isStickyObserver || size === 'sticky'
+
 	return (
 		<>
-			<Styled.Header $isSticky={isSticky}>
+			<Styled.Header
+				className={isSticky ? 'sticky' : 'default'}
+				$isSticky={isSticky}
+			>
 				{heroImage && (
 					<Styled.HeroImage
 						alt={heroImage.description}
@@ -47,23 +52,19 @@ export const Header = ({ name, description, size }: HeaderProps) => {
 					/>
 				)}
 				<Styled.Content>
-					<h1 className="grid-area-1">
-						<a className="plain" href="#top" target="_self">
+					<div className="grid-area-1 wordmark">
+						<Link className="plain" to="/#top" target="_self">
 							{name}{' '}
 							<SVG.Pomegranate
 								height="0.8em"
 								fill={Color.white}
 								width="0.8em"
 							/>
-						</a>
-					</h1>
+						</Link>
+					</div>
 					<p className="grid-area-3">{description.toString()}</p>
 				</Styled.Content>
-				<NavMenu>
-					<Link to="/">Home</Link>
-					<Link to="/#menu">Menu</Link>
-					<Link to="/location">Location</Link>
-				</NavMenu>
+				<NavMenu isSticky={isSticky} />
 			</Styled.Header>
 			<div id="stickySentinel" ref={sentinelRef}></div>
 		</>

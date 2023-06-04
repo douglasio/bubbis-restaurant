@@ -51,13 +51,6 @@ declare module 'styled-components' {
 						active: Color
 					}
 				}
-				nav: {
-					background: Color
-					link: {
-						default: Color
-						hover: Color
-					}
-				}
 			}
 		}
 		homepage: {
@@ -80,6 +73,10 @@ declare module 'styled-components' {
 		footer: {
 			background: Color
 		}
+		map: {
+			background: Color
+			border: Color
+		}
 		menu: {
 			title: {
 				text: {
@@ -95,11 +92,15 @@ declare module 'styled-components' {
 			divider: Color
 		}
 		nav: {
-			mobile: {
-				toggle: {
-					background: Color
-					text: Color
+			desktop: {
+				link: {
+					default: Color
+					hover: Color
 				}
+			}
+			mobile: {
+				backsplash: Color
+
 				list: {
 					background: Color
 					text: {
@@ -114,6 +115,11 @@ declare module 'styled-components' {
 							background: Color
 						}
 					}
+				}
+				shade: Color
+				toggle: {
+					background: Color
+					text: Color
 				}
 			}
 		}

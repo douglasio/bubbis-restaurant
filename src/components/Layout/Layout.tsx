@@ -39,14 +39,16 @@ export const Layout: React.FC<LayoutProps> = (props) => {
 		<ThemeProvider theme={theme[props.theme]}>
 			<GlobalStyle theme={theme[props.theme]} />
 			<div id="top" />
-			<Header name={name} description={description} size={props.headerSize} />
-			<Styled.Body>{props.children}</Styled.Body>
-			<Footer
-				name={name}
-				phone={phone}
-				facebook={facebook}
-				instagram={instagram}
-			/>
+			<Styled.Wrapper>
+				<Header name={name} description={description} size={props.headerSize} />
+				<Styled.Main>{props.children}</Styled.Main>
+				<Footer
+					name={name}
+					phone={phone}
+					facebook={facebook}
+					instagram={instagram}
+				/>
+			</Styled.Wrapper>
 		</ThemeProvider>
 	)
 }

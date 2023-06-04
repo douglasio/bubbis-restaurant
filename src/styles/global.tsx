@@ -89,9 +89,11 @@ export const GlobalStyle = styled.createGlobalStyle<{ theme: ThemeType }>`
 
 	a:not(.plain) {
 		color: ${({ theme }) => theme.global.content.link.default};
+		text-decoration: none;
 
 		&:hover {
 			color: ${({ theme }) => theme.global.content.link.hover};
+			text-decoration: underline;
 		}
 	}
 
@@ -109,5 +111,9 @@ export const GlobalStyle = styled.createGlobalStyle<{ theme: ThemeType }>`
 			color: ${({ theme }) => theme.global.content.button.text.hover};
 			cursor: pointer;
 		}
+	}
+
+	.wordmark {
+		font-family: ${FontFamily.playfair};
 	}
 `

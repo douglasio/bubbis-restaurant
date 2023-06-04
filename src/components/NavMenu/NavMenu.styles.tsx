@@ -1,5 +1,13 @@
 import styled from 'styled-components'
-import { Breakpoints, FontFamily, FontSize, Gutters, theme } from 'styles'
+import {
+	Breakpoints,
+	FontFamily,
+	FontSize,
+	FontWeight,
+	Gutters,
+	theme,
+} from 'styles'
+import { SVG } from 'svgs'
 
 type NavMenuStyleProps = {
 	$isVisible: boolean
@@ -7,13 +15,23 @@ type NavMenuStyleProps = {
 
 const TOGGLE_SIZE = '2rem'
 
-export const Desktop = styled.nav`
+export const Desktop = styled.div<{ $isSticky: boolean }>`
 	display: none;
 	position: absolute;
-	right: 0;
-	top: 50%;
-	transform: translateY(-50%);
+	right: 1rem;
+	top: ${({ $isSticky }) => ($isSticky ? '50%' : '0.25rem')};
+	transform: ${({ $isSticky }) => ($isSticky ? 'translateY(-50%)' : '0')};
 	z-index: 4;
+
+	.nav {
+		display: grid;
+		grid-auto-flow: column;
+		grid-column-gap: 1rem;
+
+		a {
+			color: ${({ theme }) => theme.nav.desktop.link.default};
+		}
+	}
 
 	@media screen and (min-width: ${Breakpoints.desktop}) {
 		display: block;
@@ -23,7 +41,6 @@ export const Desktop = styled.nav`
 export const Mobile = styled.div`
 	position: absolute;
 	right: ${Gutters.mobile};
-	top: 1rem;
 	z-index: 4;
 
 	@media screen and (min-width: ${Breakpoints.tablet}) {
@@ -45,6 +62,7 @@ export const Toggle = styled.button`
 	height: ${TOGGLE_SIZE};
 	position: absolute;
 	right: 0;
+	top: 0.25rem;
 	width: ${TOGGLE_SIZE};
 	z-index: 5;
 
@@ -69,7 +87,7 @@ export const Toggle = styled.button`
 `
 
 export const Shade = styled.div<NavMenuStyleProps>`
-	background-color: black;
+	background-color: ${({ theme }) => theme.nav.mobile.shade};
 	height: 100%;
 	left: 0;
 	opacity: ${({ $isVisible }) => ($isVisible ? 0.7 : 0)};
@@ -87,6 +105,7 @@ export const Dropdown = styled.div<NavMenuStyleProps>`
 	grid-template-rows: min-content auto;
 	height: 100vh;
 	opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
+	overflow: hidden;
 	padding: calc(${TOGGLE_SIZE} + 2rem) 0 1rem;
 	position: fixed;
 	right: ${({ $isVisible }) => ($isVisible ? 0 : '-100%')};
@@ -101,6 +120,7 @@ export const Dropdown = styled.div<NavMenuStyleProps>`
 		grid-auto-flow: row;
 		row-gap: 1rem;
 		text-align: center;
+		z-index: 1;
 
 		a {
 			color: ${({ theme }) => theme.nav.mobile.list.link.default.text};
@@ -119,5 +139,17 @@ export const Dropdown = styled.div<NavMenuStyleProps>`
 		font-family: ${FontFamily.playfair};
 		font-size: ${FontSize.medium};
 		text-align: center;
+		z-index: 1;
 	}
+`
+
+export const NavBackground = styled(SVG.Pomegranate)`
+	bottom: -45vmin;
+	fill: ${({ theme }) => theme.nav.mobile.backsplash};
+	height: 75vmax;
+	position: absolute;
+	left: -3rem;
+	transform: rotate(30deg);
+	width: 100%;
+	z-index: 0;
 `

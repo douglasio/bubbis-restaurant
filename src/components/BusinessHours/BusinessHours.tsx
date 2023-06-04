@@ -5,7 +5,7 @@ import { ContentfulGlobal } from 'contentful.types'
 import { WEEKDAY } from 'utils'
 import * as Styled from './BusinessHours.styles'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faDoorOpen } from '@fortawesome/free-solid-svg-icons'
+import { faDoorClosed, faDoorOpen } from '@fortawesome/free-solid-svg-icons'
 
 export function areWeOpen(
 	schedule: ContentfulGlobal['hoursObject'],
@@ -15,8 +15,6 @@ export function areWeOpen(
 		localHour: number = localTime.getHours(),
 		localWeekday = WEEKDAY[localDay]
 	let isOpen = false
-
-	fetch('http://worldtimeapi.org/api/timezone/America/Argentina/Salta')
 
 	const dailyHours = schedule.hours.find(({ day }) => day === localWeekday)
 
@@ -34,7 +32,11 @@ export function areWeOpen(
 	return isOpen
 }
 
-export const BusinessHours = () => {
+type BusinessHoursProps = {
+	showIfClosed?: boolean
+}
+
+export const BusinessHours = ({ showIfClosed }: BusinessHoursProps) => {
 	const query = useStaticQuery(graphql`
 		query businessHours {
 			contentfulGlobal {
@@ -59,6 +61,10 @@ export const BusinessHours = () => {
 	return open ? (
 		<Styled.BusinessHours>
 			We&rsquo;re open! <FontAwesomeIcon icon={faDoorOpen} />
+		</Styled.BusinessHours>
+	) : showIfClosed ? (
+		<Styled.BusinessHours>
+			We&rsquo;re closed <FontAwesomeIcon icon={faDoorClosed} />
 		</Styled.BusinessHours>
 	) : (
 		<></>

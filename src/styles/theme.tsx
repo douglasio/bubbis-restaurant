@@ -50,13 +50,6 @@ const defaultTheme: DefaultTheme = {
 					active: Color.white,
 				},
 			},
-			nav: {
-				background: Color.faluRed,
-				link: {
-					default: Color.white,
-					hover: Color.white,
-				},
-			},
 		},
 	},
 	homepage: {
@@ -79,6 +72,10 @@ const defaultTheme: DefaultTheme = {
 	footer: {
 		background: Color.faluRed,
 	},
+	map: {
+		background: Color.guardsman,
+		border: Color.white,
+	},
 	menu: {
 		title: {
 			text: {
@@ -94,11 +91,14 @@ const defaultTheme: DefaultTheme = {
 		divider: Color.sunset,
 	},
 	nav: {
-		mobile: {
-			toggle: {
-				background: Color.transparent,
-				text: Color.white,
+		desktop: {
+			link: {
+				default: Color.white,
+				hover: Color.white,
 			},
+		},
+		mobile: {
+			backsplash: Color.bulgarianRose,
 			list: {
 				background: Color.pomegranate,
 				text: {
@@ -110,9 +110,14 @@ const defaultTheme: DefaultTheme = {
 						text: Color.white,
 					},
 					hover: {
-						background: Color.jasper,
+						background: Color.guardsman,
 					},
 				},
+			},
+			shade: Color.black,
+			toggle: {
+				background: Color.transparent,
+				text: Color.white,
 			},
 		},
 	},

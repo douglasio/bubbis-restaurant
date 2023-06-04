@@ -4,6 +4,7 @@ export const enum Color {
 	transparent = 'transparent',
 
 	barnRed = '#70240F',
+	bulgarianRose = '#500a0a',
 	chewingGum = '#e6b2ad',
 	cinnabar = '#E55934',
 	darkMoss = '#625F28',

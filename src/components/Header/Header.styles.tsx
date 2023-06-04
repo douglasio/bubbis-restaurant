@@ -24,7 +24,7 @@ export const Header = styled.header<{ $isSticky?: boolean }>`
 	grid-row-gap: 0px;
 	height: ${({ $isSticky }) =>
 		$isSticky ? HeaderHeight.mobileSticky : HeaderHeight.mobile};
-	margin-bottom: 1rem;
+	overflow-x: hidden;
 	overflow-y: visible;
 	/* padding: 0.5rem ${Gutters.mobile}; */
 	position: sticky;
@@ -32,19 +32,32 @@ export const Header = styled.header<{ $isSticky?: boolean }>`
 	transition: ${getTransition('all')};
 	z-index: 2;
 
-	h1 {
+	.wordmark {
 		font-size: ${({ $isSticky }) =>
 			$isSticky ? FontSize.base : FontSize.hero1};
 		transition: ${getTransition('font-size')};
+		white-space: nowrap;
 
 		a {
 			color: unset;
+			position: relative;
 			text-decoration: unset;
+			z-index: 1;
+		}
+
+		svg {
+			opacity: ${({ $isSticky }) => ($isSticky ? '0.5' : '0.7')};
+			position: absolute;
+			right: -0.6em;
+			height: 1.25em;
+			transform: rotate(5deg);
+			width: 1.25em;
+			z-index: 0;
 		}
 	}
 
 	p {
-		font-size: ${FontSize.medium};
+		font-size: ${FontSize.hero2};
 		font-family: ${FontFamily.ysabeau};
 		font-weight: ${FontWeight.medium};
 		height: ${({ $isSticky }) => ($isSticky ? 0 : 'auto')};
@@ -67,7 +80,7 @@ export const Header = styled.header<{ $isSticky?: boolean }>`
 			$isSticky ? HeaderHeight.desktopSticky : HeaderHeight.desktop};
 		padding: 1rem ${Gutters.tablet};
 
-		h1 {
+		.wordmark {
 			font-size: ${({ $isSticky }) =>
 				$isSticky ? FontSize.base : FontSize.hero1};
 		}
