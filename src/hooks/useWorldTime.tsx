@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { WORLD_TIME_API_PST } from 'utils'
 
 type WorldTimeData = { datetime: string } | null

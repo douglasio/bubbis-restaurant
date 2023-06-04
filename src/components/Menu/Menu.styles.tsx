@@ -83,7 +83,7 @@ export const MenuItem = styled.li<{ $hasImage: boolean }>`
 		font-size: ${FontSize.medium};
 		font-weight: ${FontWeight.bold};
 		grid-area: ${({ $hasImage }) =>
-			$hasImage ? '1 / 2 / 2 / 3' : '1 / 1 / 2 / 3'};
+		$hasImage ? '1 / 2 / 2 / 3' : '1 / 1 / 2 / 3'};
 	}
 
 	.image {
@@ -100,7 +100,7 @@ export const MenuItem = styled.li<{ $hasImage: boolean }>`
 
 	.description {
 		grid-area: ${({ $hasImage }) =>
-			$hasImage ? '2 / 2 / 3 / 3' : '2 / 1 / 3 / 3'};
+		$hasImage ? '2 / 2 / 3 / 3' : '2 / 1 / 3 / 3'};
 
 		p {
 			margin: 0;
@@ -116,7 +116,7 @@ export const MenuItem = styled.li<{ $hasImage: boolean }>`
 
 			.image {
 				background-color: ${({ theme }) =>
-					theme.menu.shadedRow.image.background};
+		theme.menu.shadedRow.image.background};
 			}
 		}
 	}

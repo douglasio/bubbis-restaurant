@@ -1,7 +1,7 @@
-import React, { Fragment, useRef, type ReactNode } from 'react'
+import React, { Fragment, useRef } from 'react'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { useStickyObserver } from 'hooks'
-import type { AllContentfulMenuItem, ContentfulMenu } from 'contentful.types'
+import type { ContentfulMenu } from 'contentful.types'
 import * as Styled from './Menu.styles'
 import Markdown from 'markdown-to-jsx'
 
@@ -23,14 +23,15 @@ const MenuSection = ({ title, slug, items }: MenuSectionProps) => {
 			</Styled.Title>
 			<Styled.List>
 				{items?.map(({ id, name, price, description, image }) => {
+					const imageGatsby = getImage(image)
 					return (
 						<Fragment key={id}>
 							<Styled.MenuItem $hasImage={!!image} key={id}>
-								{image && (
+								{imageGatsby && (
 									<div className="image">
 										<GatsbyImage
 											alt={image.description ?? name}
-											image={getImage(image)!}
+											image={imageGatsby}
 										/>
 									</div>
 								)}

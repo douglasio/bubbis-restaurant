@@ -101,13 +101,13 @@ export const GlobalStyle = styled.createGlobalStyle<{ theme: ThemeType }>`
 	.button {
 		border: 0;
 		background-color: ${({ theme }) =>
-			theme.global.content.button.background.default};
+		theme.global.content.button.background.default};
 		color: ${({ theme }) => theme.global.content.button.text.default};
 		padding: 0.5em 1em;
 
 		&:hover {
 			background-color: ${({ theme }) =>
-				theme.global.content.button.background.hover};
+		theme.global.content.button.background.hover};
 			color: ${({ theme }) => theme.global.content.button.text.hover};
 			cursor: pointer;
 		}

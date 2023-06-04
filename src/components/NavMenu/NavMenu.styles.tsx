@@ -1,12 +1,5 @@
 import styled from 'styled-components'
-import {
-	Breakpoints,
-	FontFamily,
-	FontSize,
-	FontWeight,
-	Gutters,
-	theme,
-} from 'styles'
+import { Breakpoints, FontFamily, FontSize, Gutters } from 'styles'
 import { SVG } from 'svgs'
 
 type NavMenuStyleProps = {
@@ -139,7 +132,7 @@ export const Dropdown = styled.div<NavMenuStyleProps>`
 
 			&:hover {
 				background-color: ${({ theme }) =>
-					theme.nav.mobile.list.link.hover.background};
+		theme.nav.mobile.list.link.hover.background};
 			}
 		}
 	}

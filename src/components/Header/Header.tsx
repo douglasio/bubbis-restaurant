@@ -38,7 +38,8 @@ export const Header = ({ name, description, size }: HeaderProps) => {
 
 	const isSticky = isStickyObserver || size === 'sticky',
 		randomNumber = shuffleNumbers(0, heroImages.length - 1),
-		heroImage = heroImages[randomNumber]
+		heroImage = heroImages[randomNumber],
+		heroImageGatsby = getImage(heroImage)
 
 	return (
 		<>
@@ -46,11 +47,11 @@ export const Header = ({ name, description, size }: HeaderProps) => {
 				className={isSticky ? 'sticky' : 'default'}
 				$isSticky={isSticky}
 			>
-				{heroImage && (
+				{heroImageGatsby && (
 					<Styled.HeroImage
 						alt={heroImage.description}
 						draggable={false}
-						image={getImage(heroImage)!}
+						image={heroImageGatsby}
 						$isSticky={isSticky}
 					/>
 				)}

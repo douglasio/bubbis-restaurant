@@ -50,5 +50,6 @@ export type ContentfulLocationPage = {
 	images: Array<{
 		description: string
 		gatsbyImageData: IGatsbyImageData
+		id: string
 	}>
 }

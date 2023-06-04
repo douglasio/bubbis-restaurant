@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Color, FontFamily, FontSize, FontWeight } from 'styles'
+import { FontFamily, FontSize, FontWeight } from 'styles'
 
 export const BusinessHours = styled.div`
 	color: ${({ theme }) => theme.businessHours.text};

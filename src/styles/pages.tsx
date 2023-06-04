@@ -1,4 +1,3 @@
-import { GatsbyImage } from 'gatsby-plugin-image'
 import styled from 'styled-components/macro'
 import {
 	Breakpoints,
@@ -118,7 +117,7 @@ export const DesktopIntro = styled.div`
 
 	.intro-box {
 		background-color: ${({ theme }) =>
-			theme.homepage.intro.box.default.background};
+		theme.homepage.intro.box.default.background};
 		text-align: center;
 	}
 
@@ -131,7 +130,7 @@ export const DesktopIntro = styled.div`
 
 	.intro-box--feature {
 		background-color: ${({ theme }) =>
-			theme.homepage.intro.box.featured.background};
+		theme.homepage.intro.box.featured.background};
 		padding: 0;
 	}
 

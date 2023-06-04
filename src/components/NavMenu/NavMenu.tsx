@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'gatsby'
 import { faBars, faClose } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -6,7 +6,6 @@ import { useMountTransition } from 'hooks'
 import * as Styled from './NavMenu.styles'
 
 type NavMenuProps = {
-	// children?: ReactNode
 	isSticky: boolean
 }
 

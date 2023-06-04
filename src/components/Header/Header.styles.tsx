@@ -34,7 +34,7 @@ export const Header = styled.header<{ $isSticky?: boolean }>`
 
 	.wordmark {
 		font-size: ${({ $isSticky }) =>
-			$isSticky ? FontSize.base : FontSize.hero1};
+		$isSticky ? FontSize.base : FontSize.hero1};
 		transition: ${getTransition('font-size')};
 		white-space: nowrap;
 
@@ -77,17 +77,17 @@ export const Header = styled.header<{ $isSticky?: boolean }>`
 
 	@media screen and (min-width: ${Breakpoints.tablet}) {
 		height: ${({ $isSticky }) =>
-			$isSticky ? HeaderHeight.desktopSticky : HeaderHeight.desktop};
+		$isSticky ? HeaderHeight.desktopSticky : HeaderHeight.desktop};
 		padding: 1rem ${Gutters.tablet};
 
 		.wordmark {
 			font-size: ${({ $isSticky }) =>
-				$isSticky ? FontSize.base : FontSize.hero1};
+		$isSticky ? FontSize.base : FontSize.hero1};
 		}
 
 		p {
 			font-size: ${({ $isSticky }) =>
-				$isSticky ? FontSize.small : FontSize.hero2};
+		$isSticky ? FontSize.small : FontSize.hero2};
 		}
 	}
 

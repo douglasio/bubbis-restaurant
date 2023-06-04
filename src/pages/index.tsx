@@ -7,7 +7,7 @@ import type {
 	ContentfulGlobal,
 	ContentfulHomepage,
 } from 'contentful.types'
-import * as Styled from './index.styles'
+import * as Styled from 'styles/pages'
 import { GOOGLE_MAPS_LINKS } from 'utils'
 
 interface IndexPageProps {
@@ -73,7 +73,7 @@ export const Head = ({
 }: HeadProps<IndexPageProps>) => (
 	<>
 		<title>
-			{name} {name}
+			{name} {title}
 		</title>
 		<meta name="description" content={introText} />
 	</>

@@ -1,9 +1,9 @@
 import React from 'react'
 import { graphql, HeadProps, PageProps } from 'gatsby'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import { Box, BusinessHours, Layout, Map, Markdown } from 'components'
 import { ContentfulGlobal, ContentfulLocationPage } from 'contentful.types'
-import * as Styled from './index.styles'
-import { GatsbyImage } from 'gatsby-plugin-image'
+import * as Styled from 'styles/pages'
 
 interface LocationPageProps {
 	contentfulGlobal: ContentfulGlobal
@@ -16,7 +16,7 @@ const LocationPage = ({ data }: PageProps<LocationPageProps>) => {
 			addressText: { addressText },
 			hours: { hours },
 		},
-		contentfulLocationPage: { title, images },
+		contentfulLocationPage: { images },
 	} = data
 
 	return (
@@ -43,8 +43,8 @@ const LocationPage = ({ data }: PageProps<LocationPageProps>) => {
 					<div>
 						<Styled.Subsection>
 							<Styled.ImageGrid>
-								{images.map(({ description, gatsbyImageData }) => (
-									<Box>
+								{images.map(({ description, gatsbyImageData, id }) => (
+									<Box key={id}>
 										<GatsbyImage alt={description} image={gatsbyImageData} />
 									</Box>
 								))}
@@ -91,6 +91,7 @@ export const query = graphql`
 		contentfulLocationPage {
 			title
 			images {
+				id
 				gatsbyImageData(placeholder: BLURRED)
 			}
 		}
